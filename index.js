@@ -1,12 +1,17 @@
 const express = require('express');
-const app = express();
 const path = require('path');
+const app = express();
 
-app.use(express.static(path.join(__dirname, 'public')));
+// 1. Tell the server to look in the main folder for files
+app.use(express.static(path.join(__dirname, './')));
 
+// 2. Tell the server to show sip.html when the site opens
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'sip.html'));
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// 3. Use the port Render gives you
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
