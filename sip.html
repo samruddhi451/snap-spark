@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SNAP SPARK STUDIO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f5d8d8;
+      color: #080101;
+    }
+
+    .content-section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #080101;
+      margin-bottom: 20px;
+    }
+
+    header {
+      background-color: #855d5d;
+      color: white;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffdede;
+    }
+
+    .hero-section {
+      background: url("") no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .service-cards .card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px #855d5d;
+      flex: 1;
+      min-width: 280px;
+      max-width: 350px;
+      transition: transform 0.3s ease;
+    }
+
+    .service-cards .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .image-gallery {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      background-color: #855d5d;
+      color: white;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 75%;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px #855d5d;
+      cursor: pointer;
+    }
+
+    .image-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .image-wrapper .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #855d5d;
+      color: rgb(250, 246, 246);
+      padding: 10px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .image-wrapper:hover img {
+      transform: scale(1.1) rotate(2deg);
+    }
+
+    .image-wrapper:hover .overlay {
+      opacity: 1;
+    }
+
+    .scroll-gallery {
+      position: relative;
+      margin-top: 50px;
+    }
+
+    .scroll-gallery h3 {
+      margin-bottom: 20px;
+    }
+
+    .scroll-wrapper {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 10px;
+      padding: 10px 0;
+    }
+
+    .scroll-wrapper img {
+      height: 200px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .scroll-btn.left {
+      left: 0;
+    }
+
+    .scroll-btn.right {
+      right: 0;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form input, form textarea {
+      padding: 15px;
+      border: 1px solid #fac6c6;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    form button {
+      background-color: #855d5d;
+      color: black;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #be597b;
+    }
+
+    footer {
+      background-color: #855d5d;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 50px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+      }
+
+      nav ul li {
+        margin: 5px 0;
+      }
+
+      .service-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .scroll-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">SNAP SPARK</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero-section reveal">
+      <h1>SNAP SPARK STUDIO</h1>
+      <p>Explore our features and services.</p>
+    </section>
+
+    <section id="about" class="content-section reveal">
+      <h2>About Us</h2>
+      <p>Snap Spark is a photography and cinematography studio. We provide personal and public services to make your moments special.</p>
+    </section>
+
+    <section id="services" class="content-section reveal">
+      <h2>Our Services</h2>
+      <div class="service-cards">
+        <div class="card">
+          <h3>Model Photoshoots</h3>
+          <p>Professional photoshoots for aspiring models.</p>
+        </div>
+        <div class="card">
+          <h3>Wedding Photography</h3>
+          <p>Capturing your big day with elegance and joy.</p>
+        </div>
+        <div class="card">
+          <h3>Travel Shoots</h3>
+          <p>We join your trips to deliver cinematic content.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="image-gallery reveal">
+      <h2>Our Portfolio</h2>
+      <div class="gallery-container">
+        <div class="image-wrapper">
+          <img src="hobi.jpg" alt="studio shoot">
+          <div class="overlay">In-studio Photoshoot</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="wedding.jpg" alt="Wedding">
+          <div class="overlay">Capturing Their Big Day</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="proposal.jpg" alt="Proposal">
+          <div class="overlay">Capturing Their Love</div>
+        </div>
+        <div class="image-wrapper">
+          <img src="unrel world.jpg" alt="Nature">
+          <div class="overlay">Witness the Heaven</div>
+        </div>
+      </div>
+
+     
+      <div class="scroll-gallery">
+        <h3></h3>
+        <button class="scroll-btn left" onclick="scrollGallery(-300)">&#10094;</button>
+        <div class="scroll-wrapper" id="scrollGallery">
+          <img src="bts11.jpg" alt="BTS 11">
+          <img src="bts2.jpg" alt="BTS 2">
+          <img src="bts12.jpg" alt="BTS 3">
+          <img src="bts4.jpg" alt="BTS 4">
+          <img src="bts5.jpg" alt="BTS 5">
+          <img src="bts6..jpg" alt="BTS 6">
+          <img src="bts7.jpg" alt="BTS 7">
+          <img src="bts8.jpg" alt="BTS 8">
+          <img src="bts9.jpg" alt="BTS 9">
+          <img src="bts10.jpg" alt="BTS 10">
+          <img src="bts1.jpg" alt="BTS 11">
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(300)">&#10095;</button>
+      </div>
+    </section>
+
+    <section id="contact" class="content-section reveal">
+      <h2>Contact Us</h2>
+      <p>Feel free to reach out to us!</p>
+      <form id="contactForm">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SNAP SPARK STUDIO. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      document.getElementById('contactForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = this.querySelector('input[type="text"]').value.trim();
+        const email = this.querySelector('input[type="email"]').value.trim();
+        const message = this.querySelector('textarea').value.trim();
+
+        if (!name || !email || !message) {
+          alert('Please fill in all fields!');
+        } else {
+          alert(`Thank you, ${name}! We’ll get back to you soon.`);
+          this.reset();
+        }
+      });
+
+      window.addEventListener('scroll', function () {
+        const header = document.querySelector('header');
+        header.style.backgroundColor = window.scrollY > 50 ? '#6e4444' : '#855d5d';
+        header.style.boxShadow = window.scrollY > 50 ? '0 2px 8px rgba(0,0,0,0.3)' : 'none';
+      });
+
+      function revealOnScroll() {
+        document.querySelectorAll('.reveal').forEach(el => {
+          const windowHeight = window.innerHeight;
+          const elementTop = el.getBoundingClientRect().top;
+          const elementVisible = 100;
+          el.classList.toggle('active', elementTop < windowHeight - elementVisible);
+        });
+      }
+
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll(); 
+    });
+
+    function scrollGallery(distance) {
+      const container = document.getElementById('scrollGallery');
+      container.scrollBy({ left: distance, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
