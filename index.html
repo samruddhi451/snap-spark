@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SNAP SPARK STUDIO</title>
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">SNAP SPARK</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero-section reveal">
+      <h1>SNAP SPARK STUDIO</h1>
+      <p>Explore our features and services.</p>
+    </section>
+
+    <section id="about" class="content-section reveal">
+      <h2>About Us</h2>
+      <p>Snap Spark is a photography and cinematography studio.</p>
+    </section>
+
+    <section id="services" class="content-section reveal">
+      <h2>Our Services</h2>
+      <div class="service-cards">
+        <div class="card">
+          <h3>Model Photoshoots</h3>
+        </div>
+        <div class="card">
+          <h3>Wedding Photography</h3>
+        </div>
+        <div class="card">
+          <h3>Travel Shoots</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="image-gallery reveal">
+      <h2>Our Portfolio</h2>
+      <div class="gallery-container">
+        <div class="image-wrapper">
+          <img src="hobi.jpg">
+          <div class="overlay">In-studio Photoshoot</div>
+        </div>
+      </div>
+
+      <div class="scroll-gallery">
+        <button class="scroll-btn left" onclick="scrollGallery(-300)">&#10094;</button>
+        <div class="scroll-wrapper" id="scrollGallery">
+          <img src="bts1.jpg">
+          <img src="bts2.jpg">
+        </div>
+        <button class="scroll-btn right" onclick="scrollGallery(300)">&#10095;</button>
+      </div>
+    </section>
+
+    <section id="contact" class="content-section reveal">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SNAP SPARK STUDIO</p>
+  </footer>
+
+  <!-- Link JS -->
+  <script src="script.js"></script>
+</body>
+</html>
