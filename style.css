@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f5d8d8;
+}
+
+header {
+  background-color: #855d5d;
+  color: white;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.service-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.image-gallery {
+  background-color: #855d5d;
+  color: white;
+  padding: 40px;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper img {
+  width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: black;
+  color: white;
+  width: 100%;
+  opacity: 0;
+}
+
+.image-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+.scroll-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+.scroll-wrapper img {
+  height: 150px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+footer {
+  background: #855d5d;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
